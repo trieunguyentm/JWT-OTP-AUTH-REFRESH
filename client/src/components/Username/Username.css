@@ -1,0 +1,62 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  height: 100vh;
+}
+
+.login-title {
+  color: dodgerblue;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.login-form {
+  padding: 10px;
+}
+
+.label-username {
+  color: dodgerblue;
+  font-weight: 400;
+}
+
+.username {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding: 5px;
+  background-color: whitesmoke;
+}
+
+.btn-submit-username-container {
+  text-align: center !important;
+  margin-top: 30px !important;
+}
+
+.btn-submit-username {
+  text-transform: none !important;
+  background-color: dodgerblue !important;
+  font-size: 16px !important;
+  transition: all 0.5s !important;
+}
+
+.btn-submit-username:hover {
+  transform: translateY(-5px);
+}
+
+.no-account {
+  text-align: right;
+  font-size: 12px;
+  color: dodgerblue;
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+.forgot-password {
+  text-align: right;
+  font-size: 12px;
+  color: dodgerblue;
+  padding: 10px;
+}
