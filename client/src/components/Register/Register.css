@@ -1,0 +1,44 @@
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  height: 100vh;
+}
+
+.register-title {
+  margin-top: 30px;
+  color: purple;
+  text-align: center;
+}
+
+.register-form {
+  padding: 10px;
+}
+
+.register-form-field {
+  display: flex;
+  justify-content: center;
+}
+
+.username,
+.password,
+.confirm-password,
+.name,
+.phone,
+.address,
+.gmail {
+  border: 1px solid purple;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding: 5px;
+  margin: 5px;
+  background-color: whitesmoke;
+}
+
+.error-field {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: red;
+}

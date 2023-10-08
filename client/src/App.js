@@ -5,7 +5,7 @@ import PageNotFound from "./components/PageNotFound"
 import Password from "./components/Password/Password"
 import Profile from "./components/Profile"
 import Recovery from "./components/Recovery"
-import Register from "./components/Register"
+import Register from "./components/Register/Register"
 import Reset from "./components/Reset"
 
 const router = createBrowserRouter([
