@@ -11,7 +11,6 @@ const Username = () => {
     watch,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     defaultValues: {
       username: "",
@@ -152,31 +151,24 @@ const Username = () => {
               />
             </div>
             <div className="error-field">{errors.gmail?.message}</div>
-            {/* Button Login */}
-            <div className="btn-submit-username-container">
+            {/* Button signup */}
+            <div className="btn-submit-register-container">
               <Button
                 type="submit"
                 variant="contained"
-                className="btn-submit-username"
+                className="btn-submit-register"
               >
-                Đăng nhập
+                Đăng ký
               </Button>
             </div>
           </div>
         </form>
         <Divider />
-        {/* If no account create link register */}
-        <div className="no-account">
-          <span>Nếu chưa có tài khoản - </span>
-          <a href="/register" style={{ textDecoration: "underline" }}>
-            Đăng ký tại đây
-          </a>
-        </div>
-        {/* If forgot password create link recovery */}
-        <div className="forgot-password">
-          <span>Quên mật khẩu - </span>
-          <a href="/recovery" style={{ textDecoration: "underline" }}>
-            Khôi phục tài khoản
+        {/* If have account create link register */}
+        <div className="have-account">
+          <span>Nếu đã có tài khoản - </span>
+          <a href="/" style={{ textDecoration: "underline" }}>
+            Đăng nhập tại đây
           </a>
         </div>
       </Paper>
