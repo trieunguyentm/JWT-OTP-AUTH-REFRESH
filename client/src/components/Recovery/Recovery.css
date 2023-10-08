@@ -1,0 +1,62 @@
+.recovery-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  height: 100vh;
+}
+
+.recovery-title {
+  margin-top: 30px;
+  color: purple;
+  text-align: center;
+}
+
+.recovery-form {
+  padding: 10px;
+}
+
+.recovery-form-gmail {
+  display: flex;
+  justify-content: center;
+}
+
+.gmail {
+  border: 1px solid purple;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding: 5px;
+  background-color: whitesmoke;
+}
+
+.error-gmail {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: red;
+}
+
+.btn-submit-gmail-container {
+  text-align: center !important;
+  margin-top: 30px !important;
+}
+
+.btn-submit-gmail {
+  text-transform: none !important;
+  background-color: purple !important;
+  font-size: 16px !important;
+  border-radius: 20px !important;
+  transition: all 0.5s !important;
+}
+
+.btn-submit-gmail:hover {
+  transform: translateY(-5px);
+}
+
+.return-login {
+  text-align: right;
+  font-size: 12px;
+  color: purple;
+  padding: 10px;
+  padding-bottom: 0;
+}

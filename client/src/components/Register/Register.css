@@ -56,6 +56,10 @@
   transition: all 0.5s !important;
 }
 
+.btn-submit-register:hover {
+  transform: translateY(-5px);
+}
+
 .have-account {
   text-align: right;
   font-size: 12px;
