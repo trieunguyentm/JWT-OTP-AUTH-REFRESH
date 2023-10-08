@@ -4,7 +4,7 @@ import Username from "./components/Username/Username"
 import PageNotFound from "./components/PageNotFound"
 import Password from "./components/Password/Password"
 import Profile from "./components/Profile"
-import Recovery from "./components/Recovery"
+import Recovery from "./components/Recovery/Recovery"
 import Register from "./components/Register/Register"
 import Reset from "./components/Reset"
 

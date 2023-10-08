@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import "./Register.css"
 
-const Username = () => {
+const Register = () => {
   // Khai báo useForm
   const {
     register,
@@ -176,4 +176,4 @@ const Username = () => {
   )
 }
 
-export default Username
+export default Register
