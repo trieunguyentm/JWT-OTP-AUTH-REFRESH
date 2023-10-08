@@ -27,14 +27,14 @@ const Recovery = () => {
         {/* Form Page */}
         <form onSubmit={handleSubmit((data) => console.log(data))}>
           <div className="recovery-form">
-            {/* Input Username */}
+            {/* Input gmail */}
             <div className="recovery-form-gmail">
               <input
                 type="email"
                 {...register("gmail", {
                   required: {
                     value: true,
-                    message: "Vui lòng điền thông tin đăng nhập",
+                    message: "Vui lòng điền thông tin",
                   },
                 })}
                 style={{ width: "180px" }}
@@ -43,7 +43,7 @@ const Recovery = () => {
               />
             </div>
             <div className="error-gmail">{errors.gmail?.message}</div>
-            {/* Button Login */}
+            {/* Button submit */}
             <div className="btn-submit-gmail-container">
               <Button
                 type="submit"

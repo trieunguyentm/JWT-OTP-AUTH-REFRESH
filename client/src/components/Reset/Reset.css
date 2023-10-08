@@ -1,0 +1,56 @@
+.reset-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  height: 100vh;
+}
+
+.reset-title {
+  margin-top: 30px;
+  color: purple;
+  text-align: center;
+}
+
+.reset-form {
+  padding: 10px;
+}
+
+.reset-form-info {
+  display: flex;
+  justify-content: center;
+}
+
+.new-password,
+.confirm-new-password {
+  border: 1px solid purple;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding: 5px;
+  margin: 5px;
+  background-color: whitesmoke;
+}
+
+.error-field {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: red;
+}
+
+.btn-submit-reset-container {
+  text-align: center !important;
+  margin-top: 30px !important;
+}
+
+.btn-submit-reset {
+  text-transform: none !important;
+  background-color: purple !important;
+  font-size: 16px !important;
+  border-radius: 20px !important;
+  transition: all 0.5s !important;
+}
+
+.btn-submit-reset:hover {
+  transform: translateY(-5px);
+}
