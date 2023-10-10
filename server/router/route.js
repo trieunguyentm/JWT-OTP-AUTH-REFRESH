@@ -9,12 +9,12 @@ router.post("/register", controller.register)
 router.post("/registerMail")
 router.post("/authenticate")
 /** GET Methods */
-router.get("/user/:username")
+router.get("/user/:username", controller.getUser)
 router.get("/generateOTP")
 router.get("/verifyOTP")
 router.get("/createResetSession")
 /** PUT Methods */
-router.put("/updateuser")
+router.put("/updateuser/:username", controller.updateUser)
 router.put("/resetPassword")
 
 export default router

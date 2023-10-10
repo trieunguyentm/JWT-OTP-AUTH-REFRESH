@@ -109,3 +109,47 @@ export const login = async (req, res) => {
     return res.status(500).json({ code: 4, msg: "Error when login" })
   }
 }
+
+/** GET http://localhost:8080/api/user/:username */
+export const getUser = async (req, res) => {
+  const { username } = req.params
+  try {
+    // If username === undefined
+    if (!username)
+      return res.status(404).json({ code: 1, error: "Please provide username" })
+    // Find info username
+    const user = await User.findOne({ username: username }).exec()
+    // If not exist username
+    if (!user) {
+      return res.status(404).json({ code: 2, error: "User not exist" })
+    } else {
+      // Remove password from user
+      const { password, ...rest } = Object.assign({}, user.toJSON())
+      return res
+        .status(200)
+        .json({ code: 0, msg: "Get info user successfully", user: rest })
+    }
+  } catch (error) {
+    return res.status(500).json({ error })
+  }
+}
+
+/** PUT http://localhost:8080/api/updateuser/:username */
+export const updateUser = async (req, res) => {
+  const { username } = req.params
+  const { name, phone, address } = req.body
+  try {
+    const newUser = await User.findOneAndUpdate(
+      { username: username },
+      { name, phone, address },
+      { new: true },
+    )
+    if (!newUser) {
+      return res.status(404).json({ code: 1, msg: "User not exist" })
+    } else {
+      return res.status(200).json({ code: 0, msg: "Update successfully" })
+    }
+  } catch (error) {
+    return res.status(500).json({ code: 2, msg: "Can't update user" })
+  }
+}
