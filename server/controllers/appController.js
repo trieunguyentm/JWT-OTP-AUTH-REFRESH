@@ -2,6 +2,7 @@ import User from "../models/userModel.js"
 import bcrypt from "bcrypt"
 import dotenv from "dotenv"
 import jwt from "jsonwebtoken"
+import otpGenerator from "otp-generator"
 
 dotenv.config()
 
@@ -151,5 +152,30 @@ export const updateUser = async (req, res) => {
     }
   } catch (error) {
     return res.status(500).json({ code: 2, msg: "Can't update user" })
+  }
+}
+
+/** GET http://localhost:8080/api/generateOTP */
+export const generateOTP = async (req, res) => {
+  req.app.locals.OTP = otpGenerator.generate(6, {
+    lowerCaseAlphabets: false,
+    upperCaseAlphabets: false,
+    specialChars: false,
+  })
+
+  return res
+    .status(200)
+    .json({ code: req.app.locals.OTP, msg: "Generate OTP succesfully" })
+}
+
+/** GET http://localhost:8080/api/verifyOTP */
+export const verifyOTP = async (req, res) => {
+  const { code } = req.query
+  if (parseInt(req.app.locals.OTP) === parseInt(code)) {
+    req.app.locals.OTP = null // Reset OTP value
+    req.app.locals.resetSession = true // Start session for reset password
+    return res.status(200).json({ code: 0, msg: "Verify successfully" })
+  } else {
+    return res.status(400).json({ code: 1, error: "Authentication Error" })
   }
 }

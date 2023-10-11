@@ -11,8 +11,13 @@ router.post("/registerMail")
 router.post("/authenticate")
 /** GET Methods */
 router.get("/user/:username", middleware.authUser, controller.getUser)
-router.get("/generateOTP")
-router.get("/verifyOTP")
+router.get(
+  "/generateOTP",
+  middleware.verifyUser,
+  middleware.localVariable,
+  controller.generateOTP,
+)
+router.get("/verifyOTP", middleware.verifyUser, controller.verifyOTP)
 router.get("/createResetSession")
 /** PUT Methods */
 router.put("/updateuser/:username", middleware.authUser, controller.updateUser)

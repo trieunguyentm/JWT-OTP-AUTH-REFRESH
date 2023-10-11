@@ -1,7 +1,24 @@
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
+import User from "../models/userModel.js"
 
 dotenv.config()
+
+/** Verify username middle check exist username in db */
+export const verifyUser = async (req, res, next) => {
+  try {
+    const { username } = req.method === "GET" ? req.query : req.body
+    // Check user exist
+    let user = await User.findOne({ username: username }).exec()
+    // If user not exist
+    if (!user) {
+      return res.status(404).json({ error: "Username not exist" })
+    }
+    next()
+  } catch (error) {
+    return res.status(500).json({ error: "Authentication Error" })
+  }
+}
 
 /** Auth middleware */
 export const authUser = async (req, res, next) => {
@@ -24,4 +41,13 @@ export const authUser = async (req, res, next) => {
   } catch (error) {
     res.status(401).json({ error: "Authentication Failed" })
   }
+}
+
+/** Local variable middleware */
+export const localVariable = (req, res, next) => {
+  req.app.locals = {
+    OTP: null,
+    resetSession: false,
+  }
+  next()
 }
