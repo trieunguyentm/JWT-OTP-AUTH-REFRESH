@@ -179,3 +179,52 @@ export const verifyOTP = async (req, res) => {
     return res.status(400).json({ code: 1, error: "Authentication Error" })
   }
 }
+
+/** GET http://localhost:8080/api/createResetSession */
+export const createResetSession = async (req, res) => {
+  if (req.app.locals.resetSession) {
+    req.app.locals.resetSession = false
+    return res.status(200).json({ msg: "Access granted" })
+  } else {
+    return res.status(440).json({ error: "Session expired" })
+  }
+}
+
+/** PUT http://localhost:8080/api/resetPassword */
+export const resetPassword = async (req, res) => {
+  if (!req.app.locals.resetSession)
+    return res.status(440).json({ code: 5, error: "Session expired" })
+  try {
+    const { username, password } = req.body
+    // Find username
+    try {
+      const user = await User.findOne({ username: username }).exec()
+      if (!user) {
+        return res.status(404).json({ code: 1, error: "Not found user" })
+      }
+      // Create new hash password
+      const hashedPassword = await bcrypt.hash(password, 10)
+      // Update username with new password
+      try {
+        const result = await User.updateOne(
+          { username: username },
+          { password: hashedPassword },
+        )
+        req.app.locals.resetSession = false
+        return res
+          .status(200)
+          .json({ code: 0, error: "Update new password successfully" })
+      } catch (error) {
+        return res
+          .status(500)
+          .json({ code: 2, error: "Some error when update new password" })
+      }
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ code: 3, error: "Something error when find username" })
+    }
+  } catch (error) {
+    return res.status(401).json({ code: 4, error })
+  }
+}
